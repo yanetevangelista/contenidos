@@ -1,4 +1,4 @@
-
+# -*- coding: utf8 -*-
 import os.path
 from deploy import DEPLOY
 
@@ -13,7 +13,7 @@ TEMPLATE_DEBUG = DEBUG
 THUMBNAIL_DEBUG = DEBUG
 
 ADMINS = (
-     ('beren', 'beren.monsalve@gmail.com'),
+    ('beren', 'beren.monsalve@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -22,7 +22,7 @@ if DEPLOY == "DEVELOPMENT":
 
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+            'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
             'NAME': '%s/database.db' % PROJECT_PATH,                      # Or path to database file if using sqlite3.
             'USER': '',                      # Not used with sqlite3.
             'PASSWORD': '',                  # Not used with sqlite3.
@@ -34,12 +34,12 @@ if DEPLOY == "DEVELOPMENT":
 if DEPLOY == "PRODUCTION":
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'onlinecatalog',                      # Or path to database file if using sqlite3.
-            'USER': 'oncat',                      # Not used with sqlite3.
-            'PASSWORD': '@Q1m3r4#1987@',                  # Not used with sqlite3.
-            'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+            'ENGINE': 'django.db.backends.mysql',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': 'onlinecatalog',               # Or path to database file if using sqlite3.
+            'USER': 'oncat',                       # Not used with sqlite3.
+            'PASSWORD': '@Q1m3r4#1987@',           # Not used with sqlite3.
+            'HOST': '',                            # Set to empty string for localhost. Not used with sqlite3.
+            'PORT': '',                            # Set to empty string for default. Not used with sqlite3.
         }
     }
 # Local time zone for this installation. Choices can be found here:
@@ -47,9 +47,9 @@ if DEPLOY == "PRODUCTION":
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
 TIME_ZONE = 'America/Argentina/Buenos_Aires'
-SHORT_DATETIME_FORMAT='d/m/y'
-TIME_FORMAT='P'
-DATE_FORMAT="Y"
+SHORT_DATETIME_FORMAT = 'd/m/y'
+TIME_FORMAT = 'P'
+DATE_FORMAT = "Y"
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
