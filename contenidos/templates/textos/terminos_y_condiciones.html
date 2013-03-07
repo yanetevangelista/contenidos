@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block titulo %}Catalogo de autos usados CIAT{% endblock %}
+{% block contenido %}
+    <div class="row-fluid">
+        {% for texto in textos %}
+            <h1 class="ciatstyleh">{{ texto.nombre }}</h1>
+            <br>
+            {{ texto.termino_condicion|safe }}
+        {% endfor %}
+        </div>
+{% endblock %}

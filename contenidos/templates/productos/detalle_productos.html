@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load l10n %}
+{% load humanize %}
+
+{% block titulo %}Catalogo de autos usados CIAT{% endblock %}
+{% block scripts %}
+<script>
+    function imagenmodal(nombre,url){
+        $("#imginmodal").attr('src',url)
+        $("#imginmodal").attr('alt',nombre)
+        $("#myModalLabel").html(nombre)
+    }
+</script>
+{% endblock %}
+{% block contenido %}
+    <div class="row-fluid">
+        <div class="span1 offset11"></div>
+    </div>
+
+
+    <div class="row-fluid">
+        <div class="span7">
+            <!-- comienzo del carrucel-->
+            <div id="carrousel-{{ producto.id }}" class="carousel slide">
+                <div class="carousel-inner">
+                    {% for imagen in producto.imagenes  %}
+                        {% if forloop.first %}
+                            <div class="item active">
+                        {% else %}
+                            <div class="item">
+                        {% endif %}
+                    <img src="{{ imagen.thumb_pag_detalles }}" alt="{{ imagen.nombre }}">
+                    <div class="carousel-caption">
+                        <h4>{{ imagen.nombre }}</h4>
+                        <p>{{ imagen.descripcion }} <!-- Button to trigger modal -->
+                            <a href="#imagenModal" role="button" class="btn btn-success" data-toggle="modal" onclick="imagenmodal('{{ imagen.nombre }}','{{ imagen.image.url }}')">Ver Imagen Completa</a>
+                        </p>
+
+                    </div>
+                    </div>
+                    {% endfor %}
+                    </div>
+                    <a class="left carousel-control" href="#carrousel-{{ producto.id }}" data-slide="prev">‹</a>
+                    <a class="right carousel-control" href="#carrousel-{{ producto.id }}" data-slide="next">›</a>
+                </div>
+                <!--fin del carrusel-->
+        </div>
+        <div class="span5">
+
+            <h2 class="ciatstyleh">Modelo: {{ producto.nombre }}</h2>
+            {% if producto.anno %}
+                <p>Año: {{ producto.anno }}</p>
+            {% endif %}
+                <p>Tipo: {{ producto.categoria.nombre }}</p>
+            {% if producto.motor %}
+                <p>Tipo de Motor: {{ producto.motor }}</p>
+            {% endif %}
+            {% if producto.caja %}
+                <p>Tipo de Caja: {{ producto.caja }}</p>
+            {% endif %}
+            {% if producto.traccion %}
+                <p>Traccion: {{ producto.traccion }}</p>
+            {% endif %}
+            {% if producto.color %}
+                <p>Color: {{ producto.color }}</p>
+            {% endif %}
+            {% if producto.combustible %}
+                <p>Combustible: {{ producto.combustible }}</p>
+            {% endif %}
+            {% if producto.descripcion %}
+            <hr>
+            <p>
+                {{ producto.descripcion }}
+            </p>
+            {% endif %}
+            {% if producto.precio %}
+                <hr>
+                <p>
+                    PRECIO DE VENTA: ${{ producto.precio|intcomma }}
+                </p>
+            {% endif %}
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div id="imagenModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Modal header</h3>
+        </div>
+        <div class="modal-body">
+            <p><img id="imginmodal"  src="" alt=""></p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+        </div>
+    </div>
+    <!--fin modal-->
+
+{% endblock %}

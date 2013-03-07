@@ -1,0 +1,7 @@
+0. USO DE DJANGO
+1. alguna version en especial de mysql
+2. sistema de maquinas virtuales (cual?)
+3. sistema operativo ubuntu server, puede ser de 32 bits?
+4. usar cherokee web server
+
+servidor smtp???
