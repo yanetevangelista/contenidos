@@ -18,7 +18,7 @@
         <p>Para información adicional sobre la empresa, diligencie el formulario y lo contactaremos a la brevedad posible.</p>
     </div>
     <div class="span4 offset1">
-        <form id="elform" action="{% url contactos %}" method="post" class="form-horizontal">{% csrf_token %}
+        <form id="elform" action="{% url "contactos" %}" method="post" class="form-horizontal">{% csrf_token %}
             {% for field in form %}
                 <div class="control-group {% if field.errors %}error{% endif %}">
                     {{ field.label_tag }}
