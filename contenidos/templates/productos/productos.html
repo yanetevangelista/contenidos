@@ -33,7 +33,7 @@
             <p>
                 {{ producto.descripcion }}
             </p>
-            <p><a class="btn btn-success" href="{% url detalle_producto producto.url %}">Ver Mas »</a></p>
+            <p><a class="btn btn-success" href="{% url "detalle_producto" producto.url %}">Ver Mas »</a></p>
         </div>
         {% endfor %}
     </div>
