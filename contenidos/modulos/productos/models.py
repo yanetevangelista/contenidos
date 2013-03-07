@@ -3,7 +3,6 @@
 
 from django.db import models
 from django.template.loader import render_to_string
-from PIL import Image
 
 from sorl.thumbnail import ImageField,get_thumbnail
 
