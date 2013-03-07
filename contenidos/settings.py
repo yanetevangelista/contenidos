@@ -83,6 +83,9 @@ MEDIA_URL = '/media/'
 # Example: "/home/media/media.lawrence.com/static/"
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static').replace('\\', '/')
 STATIC_FILES_ROOT = os.path.join(PROJECT_DIR, 'security').replace('\\', '/')
+if DEPLOY == "PRODUCTION":
+    STATIC_ROOT = "/home/beren5000/webapps/onlinecatalogstat"
+    STATIC_FILES_ROOT = os.path.join(PROJECT_DIR, 'security').replace('\\', '/')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -100,7 +103,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -110,7 +113,7 @@ SECRET_KEY = '0k5q**&amp;n@#-0nav4%sw3mqoq3=np*jlavsy!*k4skpf#p=him6'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -120,7 +123,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'contenidos.urls'
