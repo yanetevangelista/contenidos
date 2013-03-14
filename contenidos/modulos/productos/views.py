@@ -23,18 +23,28 @@ def productos(request):
 
     template = "productos/productos.html"
     data = {
-        'products' : products,
-        'categorias' : categorias
+        'products': products,
+        'categorias': categorias
     }
     return render_to_response(template, data, context_instance=RequestContext(request))
 
 def detalle_producto(request,slug):
     categorias = Categoria.objects.filter(padre=None)
     products = get_object_or_404(Productos, url=slug)
-    #products = Productos.objects.filter(id=producto_id)
-
 
     template = "productos/detalle_productos.html"
+    data = {
+        'producto' : products,
+        'categorias' : categorias
+    }
+    return render_to_response(template, data, context_instance=RequestContext(request))
+
+def productos_categoria (request,slug):
+    categorias = Categoria.objects.filter(padre=None)
+    categoria = Categoria.objects.get(url=slug)
+    products = Productos.objects.filter(categoria=categoria)
+
+    template = "productos/categoria_productos.html"
     data = {
         'producto' : products,
         'categorias' : categorias

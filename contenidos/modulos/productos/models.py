@@ -24,7 +24,7 @@ class Maestra(models.Model):
 
 class Categoria(Maestra):
     padre = models.ForeignKey('Categoria',blank=True,null=True)
-
+    url=models.SlugField(max_length=100,verbose_name="Url")
 
     class Meta:
         verbose_name = "Categoria Auto"
@@ -62,13 +62,13 @@ class Productos (Maestra):
     ancho = models.FloatField(verbose_name="Ancho",default=0)
     distancia_ejes = models.FloatField(verbose_name="Distancia entre Ejes",default=0)
 
-    marca = models.CharField(verbose_name="Marca del Auto",max_length=100,null=True,blank=True)
+    marca = models.CharField(verbose_name="Marca del Auto", max_length=100, null=True, blank=True)
 
 
-    precio = models.BigIntegerField(verbose_name="Precio",default=0)
+    precio = models.BigIntegerField(verbose_name="Precio", default=0)
     categoria = models.ForeignKey('Categoria')
 
-    url=models.SlugField(max_length=100,verbose_name="Url")
+    url=models.SlugField(max_length=100, verbose_name="Url")
 
 
     class Meta:

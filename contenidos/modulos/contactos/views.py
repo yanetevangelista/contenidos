@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from contenidos.modulos.contactos.models import *
+from contenidos.modulos.productos.models import Categoria
 
 def contactos(request):
     if request.method == 'POST': # If the form has been submitted...
@@ -17,7 +18,9 @@ def contactos(request):
             return HttpResponseRedirect('/contactos') # Redirect after POST
     else:
         form = ContactosForm() # An unbound form
+    categorias = Categoria.objects.all()
 
     return render(request, 'contactos/contactos.html', {
+        'categorias': categorias,
         'form': form,
         })

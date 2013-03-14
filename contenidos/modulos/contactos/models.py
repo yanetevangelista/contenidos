@@ -46,7 +46,7 @@ class Contactos (Maestra):
         enviar=[]
         for contacto in self.enviar_a.all():
             enviar += [contacto.email]
-        send_mail('Nuevo contacto '+self.nombre, self.mensaje+" Email del Contacto: "+self.email, EMAIL_HOST_USER_CONTACTOS, enviar , fail_silently=False)
+        send_mail('Nuevo contacto '+self.nombre, self.mensaje+" Email del Contacto: "+self.email, EMAIL_HOST_USER_CONTACTOS, enviar, fail_silently=False)
 
 
 

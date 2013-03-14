@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load l10n %}
 {% load humanize %}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -33,18 +34,20 @@
             </a>
             <a class="brand brandback" href="{% url "productos" %}"></a>
             <ul class="nav nav-collapse collapse">
-                <li class="active"><a href="{% url "productos" %}"><i class="icon-home"></i>Inicio</a></li>
+
+                <li class="{% block active_home %}{% endblock %}"><a href="{% url "productos" %}"><i class="icon-home"></i> Inicio</a></li>
                 {% for categoria in categorias %}
                     {% if categoria.tiene_hijos %}
-                        <li class="dropdown">
+                        <li class="dropdown ">
                             {{ categoria.render_subcategorias }}
                         </li>
                     {% else %}
                         <li>
-                            <a href="#">{{ categoria.nombre }}</a>
+                            <a href="{% url "productos_categoria" categoria.url %}">{{ categoria.nombre }}</a>
                         </li>
                     {% endif %}
                 {% endfor %}
+                <li class="pull-right"><a href="{% url "contactos" %}"><i class="icon-envelope"></i> Contactos</a></li>
             </ul>
         </div>
     </div>

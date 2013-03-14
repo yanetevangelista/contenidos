@@ -9,13 +9,20 @@ class ImagenProductoInline(admin.TabularInline):
 
 class ProductosAdmin(admin.ModelAdmin):
     fieldsets = [
-        ('Detalles Principales',                {'fields': ['nombre','anno','marca','precio','motor','caja','categoria']}),
-        ('Detalles Secundarios',                {'fields': ['combustible','traccion','puestos','puertas','color','descripcion']}),
-        ('Dimensiones',                         {'fields': ['alto','largo','ancho','distancia_ejes']}),
+                    ('Detalles Principales',                {'fields': ['nombre','anno','marca','precio','motor','caja','categoria']}),
+                    ('Detalles Secundarios',                {'fields': ['combustible','traccion','puestos','puertas','color','descripcion']}),
+                    ('Dimensiones',                         {'fields': ['alto','largo','ancho','distancia_ejes']}),
+                    ('Otros',                               {'fields': ['url','activo'],'classes': ['collapse', 'extrapretty']}),
+                ]
+    prepopulated_fields = {'url': ['nombre']}
+    inlines = [ImagenProductoInline]
+
+class CategoriaAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('Detalles Principales',                {'fields': ['nombre','descripcion','padre']}),
         ('Otros',                               {'fields': ['url','activo'],'classes': ['collapse', 'extrapretty']}),
         ]
     prepopulated_fields = {'url': ['nombre']}
-    inlines = [ImagenProductoInline]
 
 
 admin.site.register(Productos,ProductosAdmin)
