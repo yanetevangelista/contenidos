@@ -1,10 +1,6 @@
 {% extends "base.html" %}
 {% block titulo %}Catalogo de autos usados CIAT{% endblock %}
 {% block contenido %}
-    <div class="hero-unit">
-        <h1>Bienvenido al Catalogo de Autos CIAT</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-    </div>
     <div class="row-fluid">
         {% for producto in products %}
         <div class="span4">
