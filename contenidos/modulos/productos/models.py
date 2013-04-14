@@ -3,6 +3,7 @@
 
 from django.db import models
 from django.template.loader import render_to_string
+from django.template.defaultfilters import slugify
 
 from sorl.thumbnail import ImageField,get_thumbnail
 
@@ -29,6 +30,10 @@ class Categoria(Maestra):
     class Meta:
         verbose_name = "Categoria Auto"
         verbose_name_plural = "Categoria Autos"
+
+    def save(self, *args, **kwargs):
+        self.url = slugify(self.nombre)
+        super(Categoria, self).save(*args, **kwargs)
 
 
     def tiene_hijos(self):
@@ -76,6 +81,11 @@ class Productos (Maestra):
     class Meta:
         verbose_name = "Producto"
         verbose_name_plural = "Productos"
+
+    def save(self, *args, **kwargs):
+        url=self.id_interno+"-"+self.nombre
+        self.url = slugify(url)
+        super(Productos, self).save(*args, **kwargs)
 
     @property
     def imagenes(self):
