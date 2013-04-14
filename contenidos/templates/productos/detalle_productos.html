@@ -48,7 +48,7 @@
         </div>
         <div class="span5">
             
-            <h2 class="ciatstyleh">Modelo: {{ producto.nombre }}</h2>
+            <h2 class="ciatstyleh">Auto Numero {{ producto.id_interno }}: {{ producto.nombre }}</h2>
             {% if producto.anno %}
                 <p>Año: {{ producto.anno }}</p>
             {% endif %}
@@ -67,6 +67,9 @@
             {% endif %}
             {% if producto.combustible %}
                 <p>Combustible: {{ producto.combustible }}</p>
+            {% endif %}
+            {% if producto.kilometraje %}
+                <p>Combustible: {{ producto.kilometraje }}</p>
             {% endif %}
             {% if producto.descripcion %}
             <hr>
