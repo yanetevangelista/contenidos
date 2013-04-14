@@ -32,9 +32,12 @@
             </div>
             <!--fin del carrusel-->
             <h3 class="ciatstyleh">{{ producto.id_interno }} - {{ producto.nombre }}</h3>
-            <p>
-                {{ producto.descripcion|truncatechars:200 }}
-            </p>
+            {% if producto.descripcion %}
+                <p>
+                    {{ producto.descripcion|truncatechars:200 }}
+                </p>
+            {% endif %}
+
             <p><a class="btn btn-success" href="{% url "detalle_producto" producto.url %}">Ver Mas »</a></p>
         </div>
         {% endfor %}
