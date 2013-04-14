@@ -83,7 +83,7 @@ class Productos (Maestra):
         verbose_name_plural = "Productos"
 
     def save(self, *args, **kwargs):
-        url=self.id_interno+"-"+self.nombre
+        url=str(self.id_interno)+"-"+str(self.nombre)
         self.url = slugify(url)
         super(Productos, self).save(*args, **kwargs)
 
