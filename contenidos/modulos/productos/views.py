@@ -19,7 +19,7 @@ from contenidos.modulos.productos.models import *
 def productos(request):
 
     categorias = Categoria.objects.filter(padre=None)
-    products = Productos.objects.all()
+    products = Productos.objects.all().order_by('id_interno')
 
     template = "productos/productos.html"
     data = {
@@ -42,7 +42,7 @@ def detalle_producto(request,slug):
 def productos_categoria (request,slug):
     categorias = Categoria.objects.filter(padre=None)
     categoria = Categoria.objects.get(url=slug)
-    products = Productos.objects.filter(categoria=categoria)
+    products = Productos.objects.filter(categoria=categoria).order_by('id_interno')
 
     template = "productos/categoria_productos.html"
     data = {
