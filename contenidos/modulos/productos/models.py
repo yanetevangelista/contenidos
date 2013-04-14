@@ -49,6 +49,7 @@ class Categoria(Maestra):
 
 class Productos (Maestra):
 
+    id_interno = models.IntegerField(verbose_name="Año del Modelo",default=0)
     anno = models.IntegerField(verbose_name="Año del Modelo",default=0)
     motor = models.CharField(verbose_name="Tipo de Motor",max_length=100,null=True,blank=True)
     combustible = models.CharField(verbose_name="Combustible Usado",max_length=100,null=True,blank=True)
