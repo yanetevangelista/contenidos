@@ -49,15 +49,18 @@
         <div class="span5">
             
             <h2 class="ciatstyleh">Auto Numero {{ producto.id_interno }}: <br>{{ producto.nombre }}</h2>
+            {% if producto.marca %}
+                <p>Marca: {{ producto.marca }}</p>
+            {% endif %}
             {% if producto.anno %}
-                <p>Año: {{ producto.anno }}</p>
+                <p>Modelo: {{ producto.anno }}</p>
             {% endif %}
                 <p>Tipo: {{ producto.categoria.nombre }}</p>
             {% if producto.motor %}
                 <p>Tipo de Motor: {{ producto.motor }}</p>
             {% endif %}
             {% if producto.caja %}
-                <p>Tipo de Caja: {{ producto.caja }}</p>
+                <p>Transmisión: {{ producto.caja }}</p>
             {% endif %}
             {% if producto.traccion %}
                 <p>Traccion: {{ producto.traccion }}</p>
@@ -80,7 +83,7 @@
             {% if producto.precio %}
                 <hr>
                 <p>
-                    PRECIO DE VENTA: ${{ producto.precio|intcomma }}
+                    PRECIO DE BASE: ${{ producto.precio|intcomma }}
                 </p>
             {% endif %}
         </div>
