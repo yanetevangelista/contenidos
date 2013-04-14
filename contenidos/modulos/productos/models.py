@@ -49,24 +49,25 @@ class Categoria(Maestra):
 
 class Productos (Maestra):
 
-    id_interno = models.IntegerField(verbose_name="Año del Modelo",default=0)
+    id_interno = models.IntegerField(verbose_name="Numeracion Interna",default=0)
     anno = models.IntegerField(verbose_name="Año del Modelo",default=0)
     motor = models.CharField(verbose_name="Tipo de Motor",max_length=100,null=True,blank=True)
     combustible = models.CharField(verbose_name="Combustible Usado",max_length=100,null=True,blank=True)
     caja = models.CharField(verbose_name="Tipo de Caja", max_length=100,null=True,blank=True)
     traccion = models.CharField(verbose_name="Traccion", max_length=100,null=True,blank=True)
     color = models.CharField(verbose_name="Color", max_length=100,null=True,blank=True)
-    puertas = models.IntegerField(verbose_name="Numero de Puertas",default=0)
-    puestos = models.IntegerField(verbose_name="Numero de Puestos",default=0)
-    largo = models.FloatField(verbose_name="Largo",default=0)
-    alto = models.FloatField(verbose_name="Alto",default=0)
-    ancho = models.FloatField(verbose_name="Ancho",default=0)
-    distancia_ejes = models.FloatField(verbose_name="Distancia entre Ejes",default=0)
+    puertas = models.IntegerField(verbose_name="Numero de Puertas",default=0,null=True,blank=True)
+    puestos = models.IntegerField(verbose_name="Numero de Puestos",default=0,null=True,blank=True)
+    largo = models.FloatField(verbose_name="Largo",default=0,null=True,blank=True)
+    alto = models.FloatField(verbose_name="Alto",default=0,null=True,blank=True)
+    ancho = models.FloatField(verbose_name="Ancho",default=0,null=True,blank=True)
+    distancia_ejes = models.FloatField(verbose_name="Distancia entre Ejes",default=0,null=True,blank=True)
+    kilometraje =  models.FloatField(verbose_name="Kilometraje",default=0,null=True,blank=True)
 
     marca = models.CharField(verbose_name="Marca del Auto", max_length=100, null=True, blank=True)
 
 
-    precio = models.BigIntegerField(verbose_name="Precio", default=0)
+    precio = models.BigIntegerField(verbose_name="Precio", default=0,null=True,blank=True)
     categoria = models.ForeignKey('Categoria')
 
     url=models.SlugField(max_length=100, verbose_name="Url")
