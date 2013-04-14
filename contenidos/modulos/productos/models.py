@@ -91,6 +91,7 @@ class Productos (Maestra):
     def imagenes(self):
         return ImagenProducto.objects.filter(producto=self)
 
+
 Productos._meta.get_field('nombre').verbose_name = 'Modelo'
 Productos._meta.get_field('descripcion').verbose_name = 'Detalles Adicionales'
 

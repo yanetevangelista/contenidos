@@ -14,6 +14,7 @@ class ProductosAdmin(admin.ModelAdmin):
                     ('Dimensiones',                         {'fields': ['alto','largo','ancho','distancia_ejes']}),
                     ('Otros',                               {'fields': ['url','activo'],'classes': ['collapse', 'extrapretty']}),
                 ]
+
     inlines = [ImagenProductoInline]
 
 class CategoriaAdmin(admin.ModelAdmin):
