@@ -4,7 +4,7 @@
 from django.db import models
 from django.forms import ModelForm
 from django.core.mail import send_mail
-from contenidos.settings import EMAIL_HOST_USER_CONTACTOS, EMAIL_HOST_PASSWORD_CONTACTOS
+from contenidos.settings import DEFAULT_FROM_EMAIL
 
 # Create your models here.
 
@@ -46,7 +46,7 @@ class Contactos (Maestra):
         enviar=[]
         for contacto in self.enviar_a.all():
             enviar += [contacto.email]
-        send_mail('Nuevo contacto '+self.nombre, self.mensaje+" Email del Contacto: "+self.email, EMAIL_HOST_USER_CONTACTOS, enviar, fail_silently=False)
+        send_mail('Nuevo contacto '+self.nombre, self.mensaje+" Email del Contacto: "+self.email, DEFAULT_FROM_EMAIL, enviar, fail_silently=False)
 
 
 
