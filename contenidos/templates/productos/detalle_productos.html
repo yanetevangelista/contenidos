@@ -72,7 +72,7 @@
                 <p>Combustible: {{ producto.combustible }}</p>
             {% endif %}
             {% if producto.kilometraje %}
-                <p>Kilometraje: {{ producto.kilometraje }}</p>
+                <p>Kilometraje: {{ producto.kilometraje|intcomma }}</p>
             {% endif %}
             {% if producto.descripcion %}
             <hr>
