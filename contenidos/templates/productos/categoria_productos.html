@@ -2,6 +2,7 @@
 {% block titulo %}Catalogo de autos usados CIAT{% endblock %}
 {% block contenido %}
     <div class="row-fluid">
+        <h2 class="ciatstyleh">{{ categ.nombre }}</h2>
         {% for producto in products %}
         <div class="span4">
             <!-- comienzo del carrucel-->
