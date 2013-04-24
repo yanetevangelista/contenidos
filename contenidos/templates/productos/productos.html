@@ -7,39 +7,42 @@
         <p>Las ofertas deben ser depositadas en la portería del CIAT en sobre cerrado, hasta el día lunes 20 de mayo de 2013 hasta las 15:00 horas.</p>
             <p>INFORMACIÓN AL 4450566 - 4450030 </p>
     </div>
-    <div class="row-fluid">
-        {% for producto in products %}
-        <div class="span4">
-            <!-- comienzo del carrucel-->
-            <div id="carrousel-{{ producto.id }}" class="carousel slide">
-                <div class="carousel-inner">
-                    {% for imagen in producto.imagenes  %}
-                        {% if forloop.first %}
-                            <div class="item active">
-                        {% else %}
-                            <div class="item">
-                        {% endif %}
-                            <img src="{{ imagen.thumb_pag_productos }}" alt="{{ imagen.nombre }}" class="img-polaroid">
-                            <div class="carousel-caption">
-                                <h4>{{ imagen.nombre }}</h4>
-                                <p>{{ imagen.descripcion }}</p>
+    {% for categoria in categorias %}
+        <div class="row-fluid">
+            <h3 class="ciatstyleh">{{ categoria.nombre }}</h3>
+            {% for producto in categoria.productos %}
+            <div class="span4">
+                <!-- comienzo del carrucel-->
+                <div id="carrousel-{{ producto.id }}" class="carousel slide">
+                    <div class="carousel-inner">
+                        {% for imagen in producto.imagenes  %}
+                            {% if forloop.first %}
+                                <div class="item active">
+                            {% else %}
+                                <div class="item">
+                            {% endif %}
+                                <img src="{{ imagen.thumb_pag_productos }}" alt="{{ imagen.nombre }}" class="img-polaroid">
+                                <div class="carousel-caption">
+                                    <h4>{{ imagen.nombre }}</h4>
+                                    <p>{{ imagen.descripcion }}</p>
+                                </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
+                    <a class="left carousel-control" href="#carrousel-{{ producto.id }}" data-slide="prev">‹</a>
+                    <a class="right carousel-control" href="#carrousel-{{ producto.id }}" data-slide="next">›</a>
                 </div>
-                <a class="left carousel-control" href="#carrousel-{{ producto.id }}" data-slide="prev">‹</a>
-                <a class="right carousel-control" href="#carrousel-{{ producto.id }}" data-slide="next">›</a>
-            </div>
-            <!--fin del carrusel-->
-            <h3 class="ciatstyleh">{{ producto.id_interno }} - {{ producto.nombre }}</h3>
-            {% if producto.descripcion %}
-                <p>
-                    {{ producto.descripcion|truncatechars:200 }}
-                </p>
-            {% endif %}
+                <!--fin del carrusel-->
+                <h3 class="ciatstyleh">{{ producto.id_interno }} - {{ producto.nombre }}</h3>
+                {% if producto.descripcion %}
+                    <p>
+                        {{ producto.descripcion|truncatechars:200 }}
+                    </p>
+                {% endif %}
 
-            <p><a class="btn btn-success" href="{% url "detalle_producto" producto.url %}">Ver Mas »</a></p>
+                <p><a class="btn btn-success" href="{% url "detalle_producto" producto.url %}">Ver Mas »</a></p>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
+    {% endfor %}
 {% endblock %}

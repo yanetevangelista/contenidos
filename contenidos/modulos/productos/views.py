@@ -19,7 +19,7 @@ from contenidos.modulos.productos.models import *
 def productos(request):
 
     categorias = Categoria.objects.filter(padre=None)
-    products = Productos.objects.all().order_by('id_interno')
+    products = Productos.objects.filter(activo=True).order_by('id_interno')
 
     template = "productos/productos.html"
     data = {

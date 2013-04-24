@@ -37,7 +37,6 @@ class Categoria(Maestra):
 
 
     def tiene_hijos(self):
-
         return len(self.__class__.objects.filter(padre=self))
 
     @property
@@ -49,6 +48,10 @@ class Categoria(Maestra):
             'subcategorias':subcategorias
         }
         return render_to_string('productos/subcategorias.html', data)
+
+    @property
+    def productos(self):
+        Productos.objects.filter(categoria__id=self.id, activo=True)
 
 
 
