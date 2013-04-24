@@ -197,12 +197,8 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
 
 
 ########################################################################################   CONFIGURACION PARA ENVIAR EMAILS SMTP
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'beren.monsalve@gmail.com'
-EMAIL_HOST_PASSWORD = '#@Quimera123@#'
-
-EMAIL_HOST_USER_CONTACTOS = 'beren.monsalve@gmail.com'
-EMAIL_HOST_PASSWORD_CONTACTOS = '#@Quimera123@#'
+EMAIL_HOST = 'smtp.webfaction.com'
+EMAIL_HOST_USER = 'ventavehiculosciat'
+EMAIL_HOST_PASSWORD = '@Quimera123@'
+DEFAULT_FROM_EMAIL = 'info@ventavehiculosciat.com'
+SERVER_EMAIL = 'info@ventavehiculosciat.com'
