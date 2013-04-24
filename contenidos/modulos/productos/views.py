@@ -47,6 +47,7 @@ def productos_categoria (request,slug):
     template = "productos/categoria_productos.html"
     data = {
         'products' : products,
-        'categorias' : categorias
+        'categorias' : categorias,
+        'categ' : categoria
     }
     return render_to_response(template, data, context_instance=RequestContext(request))
