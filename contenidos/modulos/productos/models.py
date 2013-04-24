@@ -51,7 +51,7 @@ class Categoria(Maestra):
 
     @property
     def productos(self):
-        Productos.objects.filter(categoria__id=self.id, activo=True)
+        return Productos.objects.filter(categoria__id=self.id, activo=True)
 
 
 
