@@ -36,6 +36,9 @@
 #ciatbody .ciatstyleh {
     color: #339966 !important;
     font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif ;
+    }
+
+#ciatbody .span4 {
     border-bottom: 3px solid #408140;
     }
 
