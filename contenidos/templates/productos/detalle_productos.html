@@ -71,6 +71,9 @@
             {% if producto.combustible %}
                 <p>Combustible: {{ producto.combustible }}</p>
             {% endif %}
+            {% if producto.cilindraje %}
+                <p>Cilindraje: {{ producto.cilindraje|intcomma }}</p>
+            {% endif %}
             {% if producto.kilometraje %}
                 <p>Kilometraje: {{ producto.kilometraje|floatformat:"0"|intcomma }}</p>
             {% endif %}

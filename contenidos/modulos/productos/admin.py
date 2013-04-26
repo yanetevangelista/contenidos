@@ -10,7 +10,7 @@ class ImagenProductoInline(admin.TabularInline):
 class ProductosAdmin(admin.ModelAdmin):
     fieldsets = [
                     ('Detalles Principales',                {'fields': ['id_interno','nombre','anno','marca','precio','motor','caja','categoria']}),
-                    ('Detalles Secundarios',                {'fields': ['combustible','traccion','kilometraje','puestos','puertas','color','descripcion']}),
+                    ('Detalles Secundarios',                {'fields': ['combustible','traccion','kilometraje','cilindraje','puestos','puertas','color','descripcion']}),
                     ('Dimensiones',                         {'fields': ['alto','largo','ancho','distancia_ejes']}),
                     ('Otros',                               {'fields': ['url','activo'],'classes': ['collapse', 'extrapretty']}),
                 ]
