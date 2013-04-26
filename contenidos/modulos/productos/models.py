@@ -70,8 +70,9 @@ class Productos (Maestra):
     alto = models.FloatField(verbose_name="Alto",default=0,null=True,blank=True)
     ancho = models.FloatField(verbose_name="Ancho",default=0,null=True,blank=True)
     distancia_ejes = models.FloatField(verbose_name="Distancia entre Ejes",default=0,null=True,blank=True)
-    kilometraje =  models.FloatField(verbose_name="Kilometraje",default=0,null=True,blank=True)
+    kilometraje = models.FloatField(verbose_name="Kilometraje",default=0,null=True,blank=True)
 
+    cilindraje = models.IntegerField(verbose_name="Cilindraje",default=0,null=True,blank=True)
     marca = models.CharField(verbose_name="Marca del Auto", max_length=100, null=True, blank=True)
 
 
