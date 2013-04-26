@@ -26,7 +26,7 @@
                 <a class="right carousel-control" href="#carrousel-{{ producto.id }}" data-slide="next">›</a>
             </div>
             <!--fin del carrusel-->
-            <h3 class="ciatstyleh">{{ producto.nombre }}</h3>
+            <h3 class="ciatstyleh">{{ producto.id_interno }} - {{ producto.nombre }}</h3>
             <p>
                 {{ producto.descripcion|truncatechars:200 }}
             </p>
