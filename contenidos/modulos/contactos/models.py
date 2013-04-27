@@ -3,6 +3,7 @@
 
 from django.db import models
 from django.forms import ModelForm
+from django.forms.models import inlineformset_factory
 from django.core.mail import send_mail
 from contenidos.settings import DEFAULT_FROM_EMAIL
 
@@ -20,27 +21,30 @@ class Maestra(models.Model):
     def __unicode__(self):
         return u'%s' % (self.nombre)
 
+class Contactos(Maestra):
 
-class Enviar_a (Maestra):
-
-    email = models.EmailField(verbose_name="Enviar Contactos A",max_length=70,blank=True,null=True)
+    email = models.EmailField(verbose_name="Email", max_length=70, unique=True)
     class Meta:
-        verbose_name = "Correo de recepcion"
-        verbose_name_plural = "Correos de Recepcion"
+        verbose_name = "Formulario de Contacto"
+        verbose_name_plural = "Formulario de Contactos"
 
-class Contactos (Maestra):
+    def __unicode__(self):
+        return u'%s' % (self.nombre)
 
-    email = models.EmailField(verbose_name="Email",max_length=70)
+class Mensajes(models.Model):
+    creado=models.DateTimeField(auto_now_add=True)
+    modificado=models.DateTimeField(auto_now=True)
+    contacto = models.ForeignKey('Contactos',related_name='info_contactos')
     mensaje = models.TextField(blank=True,null=True)
-
     organizacion = models.CharField(verbose_name="Organizacion",max_length=100,null=True,blank=True)
     posicion = models.CharField(verbose_name="Posicion en la Organizacion",max_length=100,null=True,blank=True)
-
-    enviar_a = models.ManyToManyField(Enviar_a)
 
     class Meta:
         verbose_name = "Contacto"
         verbose_name_plural = "Contactos"
+
+    def __unicode__(self):
+        return u'%s' % (self.contacto.nombre)
 
     def enviar_emails(self):
         enviar=[]
@@ -49,12 +53,25 @@ class Contactos (Maestra):
         send_mail('Nuevo contacto '+self.nombre, self.mensaje+" Email del Contacto: "+self.email, DEFAULT_FROM_EMAIL, enviar, fail_silently=False)
 
 
+class Newsletter(Maestra):
+    template = models.CharField(verbose_name="Organizacion",max_length=100,null=True,blank=True)
 
+
+class NewsletterXEmail(Maestra):
+    contacto = models.ForeignKey('Contactos')
+    newsletter = models.ForeignKey('Newsletter')
 
 
 ##contactosform
 class ContactosForm(ModelForm):
     class Meta:
         model = Contactos
-        fields = ['email','nombre','organizacion','posicion','mensaje']
+        fields = ['email', 'nombre']
+
+class MensajeInlineForm(ModelForm):
+    class Meta:
+        model = Mensajes
+        fields = ['posicion','organizacion','mensaje']
+
+InlineMensajeFactory = inlineformset_factory(Contactos, Mensajes, form=MensajeInlineForm, can_delete=False, extra=1)
 

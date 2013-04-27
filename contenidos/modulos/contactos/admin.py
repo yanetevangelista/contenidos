@@ -10,4 +10,4 @@ class Enviar_aAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Contactos)
-admin.site.register(Enviar_a,Enviar_aAdmin)
+admin.site.register(Mensajes)
