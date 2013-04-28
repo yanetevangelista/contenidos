@@ -4,7 +4,10 @@
 from django.db import models
 from django.forms import ModelForm
 from django.forms.models import inlineformset_factory
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMultiAlternatives
+from django.template.loader import get_template
+from django.template import Context
+
 from contenidos.settings import DEFAULT_FROM_EMAIL
 
 # Create your models here.
@@ -51,13 +54,22 @@ class Mensajes(models.Model):
 
 
 class Newsletter(Maestra):
-    template = models.CharField(verbose_name="Organizacion",max_length=100,null=True,blank=True)
 
+    template = models.CharField(verbose_name="template",max_length=100,null=True,blank=True)
+    subject = models.CharField(max_length=100,null=False)
+    text_content = models.TextField(blank=True,null=True)
+    enviado = models.BooleanField(db_index=True,default=True)
+    contactos = models.ManyToManyField(Contactos)
 
-class NewsletterXEmail(Maestra):
-    contacto = models.ForeignKey('Contactos')
-    newsletter = models.ForeignKey('Newsletter')
+    def send_newsletter(self):
+        html = get_template(self.template)
+        for contacto in self.contactos.all():
+            d = Context({ 'nombres': contacto.nombre })
 
+            html_content = html.render(d)
+            msg = EmailMultiAlternatives(self.subject, html_content, DEFAULT_FROM_EMAIL, [contacto.email])
+            msg.attach_alternative(html_content, "text/html")
+            msg.send()
 
 ##contactosform
 class ContactosForm(ModelForm):
