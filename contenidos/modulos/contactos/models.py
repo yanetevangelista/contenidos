@@ -63,7 +63,7 @@ class Newsletter(Maestra):
 
     def send_newsletter(self):
         html = get_template(self.template)
-        for contacto in self.contactos.all():
+        for contacto in self.contactos.filter(activo=True):
             d = Context({ 'nombres': contacto.nombre })
 
             html_content = html.render(d)
