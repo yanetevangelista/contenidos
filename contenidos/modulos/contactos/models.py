@@ -47,7 +47,7 @@ class Mensajes(models.Model):
         return u'%s' % (self.contacto.nombre)
 
     def enviar_emails(self):
-        send_mail('Nuevo contacto '+self.nombre, self.mensaje+" Email del Contacto: "+self.email, enviar, DEFAULT_FROM_EMAIL, fail_silently=False)
+        send_mail('Nuevo contacto '+self.contacto.nombre, self.mensaje+" Email del Contacto: "+self.contacto.email, self.contacto.email , DEFAULT_FROM_EMAIL, fail_silently=False)
 
 
 class Newsletter(Maestra):
