@@ -20,7 +20,7 @@ def contactos(request):
             inlineform = InlineMensajeFactory(request.POST,instance=nuevo_contacto)
             if inlineform.is_valid():
                 inlineform.save()
-                inlineform.enviar_emails()
+                inlineform[0].enviar_emails()
             return render(request, 'contactos/contactos.html', {
                 'categorias': categorias,
                 'form': form,
