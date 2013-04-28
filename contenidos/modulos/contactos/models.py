@@ -47,10 +47,7 @@ class Mensajes(models.Model):
         return u'%s' % (self.contacto.nombre)
 
     def enviar_emails(self):
-        enviar=[]
-        for contacto in self.enviar_a.all():
-            enviar += [contacto.email]
-        send_mail('Nuevo contacto '+self.nombre, self.mensaje+" Email del Contacto: "+self.email, DEFAULT_FROM_EMAIL, enviar, fail_silently=False)
+        send_mail('Nuevo contacto '+self.nombre, self.mensaje+" Email del Contacto: "+self.email, enviar, DEFAULT_FROM_EMAIL, fail_silently=False)
 
 
 class Newsletter(Maestra):
