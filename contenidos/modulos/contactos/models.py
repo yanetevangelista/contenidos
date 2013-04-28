@@ -8,7 +8,7 @@ from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import get_template
 from django.template import Context
 
-from contenidos.settings import DEFAULT_FROM_EMAIL
+from contenidos.settings import DEFAULT_FROM_EMAIL, CONTACT_FORM
 
 # Create your models here.
 
@@ -50,7 +50,7 @@ class Mensajes(models.Model):
         return u'%s' % (self.contacto.nombre)
 
     def enviar_emails(self):
-        send_mail('Nuevo contacto '+self.contacto.nombre, self.mensaje+" Email del Contacto: "+self.contacto.email, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL], fail_silently=False)
+        send_mail('Nuevo contacto '+self.contacto.nombre, self.mensaje+" Email del Contacto: "+self.contacto.email, self.contacto.email, [CONTACT_FORM], fail_silently=False)
 
 
 class Newsletter(Maestra):

@@ -202,3 +202,5 @@ EMAIL_HOST_USER = 'ventavehiculosciat'
 EMAIL_HOST_PASSWORD = '@Quimera123@'
 DEFAULT_FROM_EMAIL = 'info@ventavehiculosciat.com'
 SERVER_EMAIL = 'info@ventavehiculosciat.com'
+CONTACT_FORM = 'contactos@ventavehiculosciat.com'
+
