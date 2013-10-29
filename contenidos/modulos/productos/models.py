@@ -7,6 +7,8 @@ from django.template.defaultfilters import slugify
 
 from sorl.thumbnail import ImageField,get_thumbnail
 
+import random
+
 # Create your models here.
 
 
@@ -87,7 +89,7 @@ class Productos (Maestra):
         verbose_name_plural = "Productos"
 
     def save(self, *args, **kwargs):
-        url=str(self.id_interno)+str(self.creado.year)+"-"+str(self.nombre)
+        url=str(self.id_interno)+str(random.randrange(0,1000))+"-"+str(self.nombre)
         self.url = slugify(url)
         super(Productos, self).save(*args, **kwargs)
 
