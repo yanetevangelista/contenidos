@@ -16,6 +16,7 @@ class ProductosAdmin(admin.ModelAdmin):
                 ]
 
     inlines = [ImagenProductoInline]
+    list_display = ('nombre','activo','url')
 
 class CategoriaAdmin(admin.ModelAdmin):
     fieldsets = [
