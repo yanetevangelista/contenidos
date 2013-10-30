@@ -42,7 +42,7 @@ def detalle_producto(request,slug):
 def productos_categoria (request,slug):
     categorias = Categoria.objects.filter(padre=None)
     categoria = Categoria.objects.get(url=slug)
-    products = Productos.objects.filter(categoria=categoria).order_by('id_interno')
+    products = Productos.objects.filter(categoria=categoria,activo=True).order_by('id_interno')
 
     template = "productos/categoria_productos.html"
     data = {
