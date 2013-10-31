@@ -80,7 +80,7 @@
             {% if producto.descripcion %}
             <hr>
             <p>
-                {{ producto.descripcion }}
+                {{ producto.descripcion|safe }}
             </p>
             {% endif %}
             {% if producto.precio %}
