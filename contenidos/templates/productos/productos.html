@@ -46,7 +46,7 @@
                 <h3 class="ciatstyleh">{{ producto.id_interno }} - {{ producto.nombre }}</h3>
                 {% if producto.descripcion %}
                     <p>
-                        {{ producto.descripcion|truncatechars:200 }}
+                        {{ producto.descripcion|truncatechars:200|safe }}
                     </p>
                 {% endif %}
 
