@@ -7,7 +7,7 @@ class Enviar_aAdmin(admin.ModelAdmin):
     fieldsets = [
         ('Enviar A',                {'fields': ['nombre','email']}),
         ]
-
+    list_display = ('nombre','email')
 
 admin.site.register(Contactos)
 admin.site.register(Mensajes)
